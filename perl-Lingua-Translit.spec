@@ -103,8 +103,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.0/Lingua/Translit.pm
-/usr/lib/perl5/vendor_perl/5.28.0/Lingua/Translit/Tables.pm
+/usr/lib/perl5/vendor_perl/5.28.1Lingua/Translit.pm
+/usr/lib/perl5/vendor_perl/5.28.1Lingua/Translit/Tables.pm
 
 %files bin
 %defattr(-,root,root,-)
