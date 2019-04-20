@@ -4,11 +4,11 @@
 #
 Name     : perl-Lingua-Translit
 Version  : 0.28
-Release  : 10
+Release  : 11
 URL      : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libl/liblingua-translit-perl/liblingua-translit-perl_0.28-1.debian.tar.xz
-Summary  : transliterates text between writing systems
+Summary  : Transliteration of text between writing systems
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Lingua-Translit-bin = %{version}-%{release}
@@ -28,7 +28,6 @@ Where possible a reverse transliteration is supported.
 Summary: bin components for the perl-Lingua-Translit package.
 Group: Binaries
 Requires: perl-Lingua-Translit-license = %{version}-%{release}
-Requires: perl-Lingua-Translit-man = %{version}-%{release}
 
 %description bin
 bin components for the perl-Lingua-Translit package.
@@ -39,6 +38,7 @@ Summary: dev components for the perl-Lingua-Translit package.
 Group: Development
 Requires: perl-Lingua-Translit-bin = %{version}-%{release}
 Provides: perl-Lingua-Translit-devel = %{version}-%{release}
+Requires: perl-Lingua-Translit = %{version}-%{release}
 
 %description dev
 dev components for the perl-Lingua-Translit package.
@@ -65,7 +65,7 @@ man components for the perl-Lingua-Translit package.
 cd ..
 %setup -q -T -D -n Lingua-Translit-0.28 -b 1
 mkdir -p deblicense/
-mv %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Lingua-Translit-0.28/deblicense/
+cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Lingua-Translit-0.28/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
