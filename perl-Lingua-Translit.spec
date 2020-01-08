@@ -4,16 +4,17 @@
 #
 Name     : perl-Lingua-Translit
 Version  : 0.28
-Release  : 11
+Release  : 12
 URL      : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libl/liblingua-translit-perl/liblingua-translit-perl_0.28-1.debian.tar.xz
-Summary  : Transliteration of text between writing systems
+Summary  : transliterates text between writing systems
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Lingua-Translit-bin = %{version}-%{release}
 Requires: perl-Lingua-Translit-license = %{version}-%{release}
 Requires: perl-Lingua-Translit-man = %{version}-%{release}
+Requires: perl-Lingua-Translit-perl = %{version}-%{release}
 BuildRequires : buildreq-cpan
 
 %description
@@ -60,18 +61,28 @@ Group: Default
 man components for the perl-Lingua-Translit package.
 
 
+%package perl
+Summary: perl components for the perl-Lingua-Translit package.
+Group: Default
+Requires: perl-Lingua-Translit = %{version}-%{release}
+
+%description perl
+perl components for the perl-Lingua-Translit package.
+
+
 %prep
 %setup -q -n Lingua-Translit-0.28
-cd ..
-%setup -q -T -D -n Lingua-Translit-0.28 -b 1
+cd %{_builddir}
+tar xf %{_sourcedir}/liblingua-translit-perl_0.28-1.debian.tar.xz
+cd %{_builddir}/Lingua-Translit-0.28
 mkdir -p deblicense/
-cp -r %{_topdir}/BUILD/debian/* %{_topdir}/BUILD/Lingua-Translit-0.28/deblicense/
+cp -r %{_builddir}/debian/* %{_builddir}/Lingua-Translit-0.28/deblicense/
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
+export LANG=C.UTF-8
 if test -f Makefile.PL; then
 %{__perl} Makefile.PL
 make  %{?_smp_mflags}
@@ -81,7 +92,7 @@ else
 fi
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
@@ -90,7 +101,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit
-cp deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit/deblicense_copyright
+cp %{_builddir}/Lingua-Translit-0.28/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit/5b393c2adae1e322316aff4db87c45cd20027db7
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -103,8 +114,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Lingua/Translit.pm
-/usr/lib/perl5/vendor_perl/5.28.2/Lingua/Translit/Tables.pm
 
 %files bin
 %defattr(-,root,root,-)
@@ -117,8 +126,13 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Lingua-Translit/deblicense_copyright
+/usr/share/package-licenses/perl-Lingua-Translit/5b393c2adae1e322316aff4db87c45cd20027db7
 
 %files man
 %defattr(0644,root,root,0755)
 /usr/share/man/man1/translit.1
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Lingua/Translit.pm
+/usr/lib/perl5/vendor_perl/5.30.1/Lingua/Translit/Tables.pm
