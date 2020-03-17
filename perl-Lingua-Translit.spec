@@ -4,7 +4,7 @@
 #
 Name     : perl-Lingua-Translit
 Version  : 0.28
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libl/liblingua-translit-perl/liblingua-translit-perl_0.28-1.debian.tar.xz
@@ -101,7 +101,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit
-cp %{_builddir}/Lingua-Translit-0.28/deblicense/copyright %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit/5b393c2adae1e322316aff4db87c45cd20027db7
+cp %{_builddir}/debian/copyright %{buildroot}/usr/share/package-licenses/perl-Lingua-Translit/5b393c2adae1e322316aff4db87c45cd20027db7
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -134,5 +134,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Lingua/Translit.pm
-/usr/lib/perl5/vendor_perl/5.30.1/Lingua/Translit/Tables.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Lingua/Translit.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Lingua/Translit/Tables.pm
