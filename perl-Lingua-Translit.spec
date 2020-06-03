@@ -4,7 +4,7 @@
 #
 Name     : perl-Lingua-Translit
 Version  : 0.28
-Release  : 13
+Release  : 14
 URL      : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.28.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libl/liblingua-translit-perl/liblingua-translit-perl_0.28-1.debian.tar.xz
@@ -134,5 +134,5 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.2/Lingua/Translit.pm
-/usr/lib/perl5/vendor_perl/5.30.2/Lingua/Translit/Tables.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Lingua/Translit.pm
+/usr/lib/perl5/vendor_perl/5.30.3/Lingua/Translit/Tables.pm
