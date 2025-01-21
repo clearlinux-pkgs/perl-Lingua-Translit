@@ -4,7 +4,7 @@
 #
 Name     : perl-Lingua-Translit
 Version  : 0.29
-Release  : 29
+Release  : 30
 URL      : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.29.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AL/ALINKE/Lingua-Translit-0.29.tar.gz
 Source1  : http://http.debian.net/debian/pool/main/libl/liblingua-translit-perl/liblingua-translit-perl_0.28-1.debian.tar.xz
